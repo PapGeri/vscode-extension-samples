@@ -14,7 +14,11 @@ import {
 	CompletionItemKind,
 	TextDocumentPositionParams,
 	TextDocumentSyncKind,
-	InitializeResult
+	InitializeResult,
+	HoverParams,
+	Hover,
+	MarkupContent,
+	MarkupKind
 } from 'vscode-languageserver';
 
 import {
@@ -55,7 +59,8 @@ connection.onInitialize((params: InitializeParams) => {
 			// Tell the client that this server supports code completion.
 			completionProvider: {
 				resolveProvider: true
-			}
+			},
+			hoverProvider: true,
 		}
 	};
 	if (hasWorkspaceFolderCapability) {
@@ -184,6 +189,15 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 connection.onDidChangeWatchedFiles(_change => {
 	// Monitored files have change in VSCode
 	connection.console.log('We received an file change event');
+});
+
+connection.onHover((_params: HoverParams): Hover | null => {
+	if(_params.position.line === 0) {
+		return {
+			contents: "my hover" 
+		}
+	}
+	return null;
 });
 
 // This handler provides the initial list of the completion items.
