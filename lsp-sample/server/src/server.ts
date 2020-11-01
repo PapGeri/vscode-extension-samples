@@ -18,10 +18,12 @@ import {
 	HoverParams,
 	Hover,
 	MarkupContent,
-	MarkupKind
+	MarkupKind,
+	MarkedString
 } from 'vscode-languageserver';
 
 import {
+	Range,
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 
@@ -191,13 +193,44 @@ connection.onDidChangeWatchedFiles(_change => {
 	connection.console.log('We received an file change event');
 });
 
-connection.onHover((_params: HoverParams): Hover | null => {
-	if(_params.position.line === 0) {
-		return {
-			contents: "my hover" 
+const getWord = (text: string, index: number): string => {
+	const first = text.lastIndexOf(' ', index);
+    const last = text.indexOf(' ', index);
+    return text.substring(first !== -1 ? first : 0, last !== -1 ? last : text.length - 1);
+};
+
+connection.onHover(({textDocument, position}: HoverParams): Hover | undefined => {
+
+	const document = documents.get(textDocument.uri);
+	const start = {
+		line: position.line,
+		character: 0
+	};
+
+	const end = {
+		line: position.line + 1,
+		character: 0
+	};
+
+	const currentText = document!.getText({start, end});
+	const currentIndex = document!.offsetAt(position) - document!.offsetAt(start);
+	const currentWord = getWord(currentText, currentIndex);
+
+// connection.onHover((_params: TextDocumentPositionParams): Hover | undefined => {
+
+		if(currentWord !== ''){
+			return {
+				contents: {
+					kind: 'markdown',
+					value: [
+						`# Text is: **${currentText}**`,
+						`# Index is: **${currentIndex}**`,
+						`### Current Word is: **${currentWord}**`
+					].join('\n')
+				}
+			}
 		}
-	}
-	return null;
+		return undefined;
 });
 
 // This handler provides the initial list of the completion items.
