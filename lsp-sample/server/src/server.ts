@@ -196,7 +196,7 @@ connection.onDidChangeWatchedFiles(_change => {
 const getWord = (text: string, index: number): string => {
 	const first = text.lastIndexOf(' ', index);
     const last = text.indexOf(' ', index);
-    return text.substring(first !== -1 ? first : 0, last !== -1 ? last : text.length - 1);
+    return text.substring(first !== -1 ? first : 0, last !== -1 ? last : text.length);
 };
 
 connection.onHover(({textDocument, position}: HoverParams): Hover | undefined => {
@@ -223,9 +223,9 @@ connection.onHover(({textDocument, position}: HoverParams): Hover | undefined =>
 				contents: {
 					kind: 'markdown',
 					value: [
-						`# Text is: **${currentText}**`,
-						`# Index is: **${currentIndex}**`,
-						`### Current Word is: **${currentWord}**`
+						`# Text is: ${currentText}`,
+						`## Index is: ${currentIndex}`,
+						`### Current Word is: ${currentWord}`
 					].join('\n')
 				}
 			}
