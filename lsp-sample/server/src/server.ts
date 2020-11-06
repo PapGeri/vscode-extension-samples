@@ -270,3 +270,5 @@ documents.listen(connection);
 
 // Listen on the connection
 connection.listen();
+
+export * as P4Server from './server';
