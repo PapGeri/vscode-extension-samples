@@ -31,7 +31,15 @@
 				"extensions": [
 					"P4",
 					".p4"
-				]
+				],
+				"configuration": "./client/p4-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "p4",
+				"scopeName": "source.p4",
+				"path": "./client/syntaxes/p4.tmLanguage"
 			}
 		],
 		"configuration": {

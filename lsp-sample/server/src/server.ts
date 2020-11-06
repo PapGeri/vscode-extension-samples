@@ -23,9 +23,11 @@ import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 
+import { getDataFromAntlr } from './compiler/antlr4ts_proxy';
+
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
-let connection = createConnection(ProposedFeatures.all);
+export let connection = createConnection(ProposedFeatures.all);
 
 // Create a simple text document manager. 
 let documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
@@ -134,7 +136,8 @@ documents.onDidClose(e => {
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent(change => {
-	validateTextDocument(change.document);
+	// validateTextDocument(change.document);
+	getDataFromAntlr(change.document);
 });
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
@@ -189,7 +192,7 @@ connection.onDidChangeWatchedFiles(_change => {
 	connection.console.log('We received an file change event');
 });
 
-const getWordFromLine = (text: string, index: number): string => {
+export const getWordFromLine = (text: string, index: number): string => {
 	const first = text.lastIndexOf(' ', index);
     const last = text.indexOf(' ', index);
     return text.substring(first !== -1 ? first : 0, last !== -1 ? last : text.length);
@@ -270,5 +273,3 @@ documents.listen(connection);
 
 // Listen on the connection
 connection.listen();
-
-export * as P4Server from './server';
