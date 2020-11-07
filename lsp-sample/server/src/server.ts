@@ -24,6 +24,7 @@ import {
 } from 'vscode-languageserver-textdocument';
 
 import { getDataFromAntlr } from './compiler/antlr4ts_proxy';
+import MyListener from './compiler/MyListener';
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -214,6 +215,9 @@ connection.onHover(({textDocument, position}: HoverParams): Hover | undefined =>
 	const currentLineText = document!.getText({start, end});
 	const currentIndex = document!.offsetAt(position) - document!.offsetAt(start);
 	const currentWord = getWordFromLine(currentLineText, currentIndex);
+	
+	const MY_LISTENER = new MyListener();
+	// const content = MY_LISTENER.visitTerminal(currentWord);
 
 	if(currentWord !== ''){
 		return {
