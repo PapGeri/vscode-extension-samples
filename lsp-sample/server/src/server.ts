@@ -23,8 +23,7 @@ import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 
-import { getDataFromAntlr } from './compiler/antlr4ts_proxy';
-import MyListener from './compiler/MyListener';
+import { getDataFromAntlr, MY_LISTENER } from './compiler/antlr4ts_proxy';
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -137,8 +136,8 @@ documents.onDidClose(e => {
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent(change => {
-	// validateTextDocument(change.document);
-	getDataFromAntlr(change.document);
+	validateTextDocument(change.document);
+	getDataFromAntlr(documents.get(change.document.uri)!);
 });
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
@@ -216,20 +215,26 @@ connection.onHover(({textDocument, position}: HoverParams): Hover | undefined =>
 	const currentIndex = document!.offsetAt(position) - document!.offsetAt(start);
 	const currentWord = getWordFromLine(currentLineText, currentIndex);
 	
-	const MY_LISTENER = new MyListener();
-	// const content = MY_LISTENER.visitTerminal(currentWord);
+	
+	const finalContent = MY_LISTENER!.getHoverContent(currentWord);
+	// console.log(MY_LISTENER!.myList);
+	// const MY_LISTENER = new MyListener();
+	// const finalContent = MY_LISTENER.getHoverContent(currentIndex);
+
+	
 
 	if(currentWord !== ''){
-		return {
-			contents: {
-				kind: 'markdown',
-				value: [
-					`# Text is: ${currentLineText}`,
-					`## Index is: ${currentIndex}`,
-					`### Current Word is: ${currentWord}`
-				].join('\n')
-			}
-		}
+		return finalContent;
+		// return {
+		// 	contents: {
+		// 		kind: 'markdown',
+		// 		value: [
+		// 			`# Text is: ${currentLineText}`,
+		// 			`## Index is: ${currentIndex}`,
+		// 			`### Current Word is: ${currentWord}`
+		// 		].join('\n')
+		// 	}
+		// }
 	}
 	return undefined;
 });
