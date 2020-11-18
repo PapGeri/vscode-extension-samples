@@ -205,7 +205,7 @@ export class P4grammarLexer extends Lexer {
 	public get ruleNames(): string[] { return P4grammarLexer.ruleNames; }
 
 	// @Override
-	public get serializedATN(): string { return P4grammarLexer._serializedATN; }
+	// public get serializedATN(): string { return P4grammarLexer._serializedATN; }
 
 	// @Override
 	public get channelNames(): string[] { return P4grammarLexer.channelNames; }

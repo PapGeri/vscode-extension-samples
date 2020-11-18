@@ -191,8 +191,9 @@ connection.onDidChangeWatchedFiles(_change => {
 	// Monitored files have change in VSCode
 	connection.console.log('We received an file change event');
 });
-
-export const getWordFromLine = (text: string, index: number): string => {
+// nincs ra szukseg
+// pozicio szerint kell keresni a szintaxis faban, nem szo szerint
+const getWordFromLine = (text: string, index: number): string => {
 	const first = text.lastIndexOf(' ', index);
     const last = text.indexOf(' ', index);
     return text.substring(first !== -1 ? first : 0, last !== -1 ? last : text.length);
@@ -215,13 +216,11 @@ connection.onHover(({textDocument, position}: HoverParams): Hover | undefined =>
 	const currentIndex = document!.offsetAt(position) - document!.offsetAt(start);
 	const currentWord = getWordFromLine(currentLineText, currentIndex);
 	
-	
-	const finalContent = MY_LISTENER!.getHoverContent(currentWord);
-	// console.log(MY_LISTENER!.myList);
 	// const MY_LISTENER = new MyListener();
-	// const finalContent = MY_LISTENER.getHoverContent(currentIndex);
+	// const content = MY_LISTENER.visitTerminal(currentWord);
 
-	
+	// const MY_LISTENER = new MyListener();
+	const finalContent = MY_LISTENER!.getHoverContent(currentWord);
 
 	if(currentWord !== ''){
 		return finalContent;

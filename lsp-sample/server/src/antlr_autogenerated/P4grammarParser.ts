@@ -338,7 +338,7 @@ export class P4grammarParser extends Parser {
 	public get ruleNames(): string[] { return P4grammarParser.ruleNames; }
 
 	// @Override
-	public get serializedATN(): string { return P4grammarParser._serializedATN; }
+	// public get serializedATN(): string { return P4grammarParser._serializedATN; }
 
 	constructor(input: TokenStream) {
 		super(input);
@@ -9512,7 +9512,7 @@ export class StartContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_start; }
+	// number { return P4grammarParser.RULE_start; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterStart) {
@@ -9544,7 +9544,7 @@ export class ProgramContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_program; }
+	// number { return P4grammarParser.RULE_program; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterProgram) {
@@ -9580,7 +9580,7 @@ export class InputContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_input; }
+	// number { return P4grammarParser.RULE_input; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterInput) {
@@ -9642,7 +9642,7 @@ export class DeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_declaration; }
+	// number { return P4grammarParser.RULE_declaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterDeclaration) {
@@ -9693,7 +9693,7 @@ export class PreprocessorLineContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_preprocessorLine; }
+	// number { return P4grammarParser.RULE_preprocessorLine; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterPreprocessorLine) {
@@ -9739,7 +9739,7 @@ export class PpIncludeFileNameContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_ppIncludeFileName; }
+	// number { return P4grammarParser.RULE_ppIncludeFileName; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterPpIncludeFileName) {
@@ -9777,7 +9777,7 @@ export class NonTypeNameContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_nonTypeName; }
+	// number { return P4grammarParser.RULE_nonTypeName; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterNonTypeName) {
@@ -9812,7 +9812,7 @@ export class NameContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_name; }
+	// number { return P4grammarParser.RULE_name; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterName) {
@@ -9847,7 +9847,7 @@ export class NonTableKwNameContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_nonTableKwName; }
+	// number { return P4grammarParser.RULE_nonTableKwName; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterNonTableKwName) {
@@ -9877,7 +9877,7 @@ export class OptCONSTContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_optCONST; }
+	// number { return P4grammarParser.RULE_optCONST; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterOptCONST) {
@@ -9909,7 +9909,7 @@ export class OptAnnotationsContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_optAnnotations; }
+	// number { return P4grammarParser.RULE_optAnnotations; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterOptAnnotations) {
@@ -9944,7 +9944,7 @@ export class AnnotationsContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_annotations; }
+	// number { return P4grammarParser.RULE_annotations; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterAnnotations) {
@@ -9983,7 +9983,7 @@ export class AnnotationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_annotation; }
+	// number { return P4grammarParser.RULE_annotation; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterAnnotation) {
@@ -10026,7 +10026,7 @@ export class AnnotationBodyContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_annotationBody; }
+	// number { return P4grammarParser.RULE_annotationBody; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterAnnotationBody) {
@@ -10140,7 +10140,7 @@ export class AnnotationTokenContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_annotationToken; }
+	// number { return P4grammarParser.RULE_annotationToken; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterAnnotationToken) {
@@ -10176,7 +10176,7 @@ export class KvListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_kvList; }
+	// number { return P4grammarParser.RULE_kvList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterKvList) {
@@ -10212,7 +10212,7 @@ export class KvPairContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_kvPair; }
+	// number { return P4grammarParser.RULE_kvPair; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterKvPair) {
@@ -10244,7 +10244,7 @@ export class ParameterListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parameterList; }
+	// number { return P4grammarParser.RULE_parameterList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParameterList) {
@@ -10280,7 +10280,7 @@ export class NonEmptyParameterListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_nonEmptyParameterList; }
+	// number { return P4grammarParser.RULE_nonEmptyParameterList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterNonEmptyParameterList) {
@@ -10325,7 +10325,7 @@ export class ParameterContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parameter; }
+	// number { return P4grammarParser.RULE_parameter; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParameter) {
@@ -10357,7 +10357,7 @@ export class DirectionContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_direction; }
+	// number { return P4grammarParser.RULE_direction; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterDirection) {
@@ -10401,7 +10401,7 @@ export class PackageTypeDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_packageTypeDeclaration; }
+	// number { return P4grammarParser.RULE_packageTypeDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterPackageTypeDeclaration) {
@@ -10449,7 +10449,7 @@ export class InstantiationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_instantiation; }
+	// number { return P4grammarParser.RULE_instantiation; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterInstantiation) {
@@ -10483,7 +10483,7 @@ export class ObjInitializerContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_objInitializer; }
+	// number { return P4grammarParser.RULE_objInitializer; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterObjInitializer) {
@@ -10518,7 +10518,7 @@ export class ObjDeclarationsContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_objDeclarations; }
+	// number { return P4grammarParser.RULE_objDeclarations; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterObjDeclarations) {
@@ -10553,7 +10553,7 @@ export class ObjDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_objDeclaration; }
+	// number { return P4grammarParser.RULE_objDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterObjDeclaration) {
@@ -10587,7 +10587,7 @@ export class OptConstructorParametersContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_optConstructorParameters; }
+	// number { return P4grammarParser.RULE_optConstructorParameters; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterOptConstructorParameters) {
@@ -10617,7 +10617,7 @@ export class DotPrefixContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_dotPrefix; }
+	// number { return P4grammarParser.RULE_dotPrefix; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterDotPrefix) {
@@ -10660,7 +10660,7 @@ export class ParserDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserDeclaration; }
+	// number { return P4grammarParser.RULE_parserDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserDeclaration) {
@@ -10695,7 +10695,7 @@ export class ParserLocalElementsContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserLocalElements; }
+	// number { return P4grammarParser.RULE_parserLocalElements; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserLocalElements) {
@@ -10736,7 +10736,7 @@ export class ParserLocalElementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserLocalElement; }
+	// number { return P4grammarParser.RULE_parserLocalElement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserLocalElement) {
@@ -10780,7 +10780,7 @@ export class ParserTypeDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserTypeDeclaration; }
+	// number { return P4grammarParser.RULE_parserTypeDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserTypeDeclaration) {
@@ -10815,7 +10815,7 @@ export class ParserStatesContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserStates; }
+	// number { return P4grammarParser.RULE_parserStates; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserStates) {
@@ -10859,7 +10859,7 @@ export class ParserStateContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserState; }
+	// number { return P4grammarParser.RULE_parserState; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserState) {
@@ -10894,7 +10894,7 @@ export class ParserStatementsContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserStatements; }
+	// number { return P4grammarParser.RULE_parserStatements; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserStatements) {
@@ -10938,7 +10938,7 @@ export class ParserStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserStatement; }
+	// number { return P4grammarParser.RULE_parserStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserStatement) {
@@ -10975,7 +10975,7 @@ export class ParserBlockStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserBlockStatement; }
+	// number { return P4grammarParser.RULE_parserBlockStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserBlockStatement) {
@@ -11008,7 +11008,7 @@ export class TransitionStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_transitionStatement; }
+	// number { return P4grammarParser.RULE_transitionStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTransitionStatement) {
@@ -11044,7 +11044,7 @@ export class StateExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_stateExpression; }
+	// number { return P4grammarParser.RULE_stateExpression; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterStateExpression) {
@@ -11084,7 +11084,7 @@ export class SelectExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_selectExpression; }
+	// number { return P4grammarParser.RULE_selectExpression; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSelectExpression) {
@@ -11119,7 +11119,7 @@ export class SelectCaseListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_selectCaseList; }
+	// number { return P4grammarParser.RULE_selectCaseList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSelectCaseList) {
@@ -11156,7 +11156,7 @@ export class SelectCaseContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_selectCase; }
+	// number { return P4grammarParser.RULE_selectCase; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSelectCase) {
@@ -11191,7 +11191,7 @@ export class KeysetExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_keysetExpression; }
+	// number { return P4grammarParser.RULE_keysetExpression; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterKeysetExpression) {
@@ -11229,7 +11229,7 @@ export class TupleKeysetExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_tupleKeysetExpression; }
+	// number { return P4grammarParser.RULE_tupleKeysetExpression; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTupleKeysetExpression) {
@@ -11265,7 +11265,7 @@ export class SimpleExpressionListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_simpleExpressionList; }
+	// number { return P4grammarParser.RULE_simpleExpressionList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSimpleExpressionList) {
@@ -11307,7 +11307,7 @@ export class SimpleKeysetExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_simpleKeysetExpression; }
+	// number { return P4grammarParser.RULE_simpleKeysetExpression; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSimpleKeysetExpression) {
@@ -11360,7 +11360,7 @@ export class ValueSetDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_valueSetDeclaration; }
+	// number { return P4grammarParser.RULE_valueSetDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterValueSetDeclaration) {
@@ -11404,7 +11404,7 @@ export class ControlDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_controlDeclaration; }
+	// number { return P4grammarParser.RULE_controlDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterControlDeclaration) {
@@ -11448,7 +11448,7 @@ export class ControlTypeDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_controlTypeDeclaration; }
+	// number { return P4grammarParser.RULE_controlTypeDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterControlTypeDeclaration) {
@@ -11483,7 +11483,7 @@ export class ControlLocalDeclarationsContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_controlLocalDeclarations; }
+	// number { return P4grammarParser.RULE_controlLocalDeclarations; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterControlLocalDeclarations) {
@@ -11527,7 +11527,7 @@ export class ControlLocalDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_controlLocalDeclaration; }
+	// number { return P4grammarParser.RULE_controlLocalDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterControlLocalDeclaration) {
@@ -11559,7 +11559,7 @@ export class ControlBodyContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_controlBody; }
+	// number { return P4grammarParser.RULE_controlBody; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterControlBody) {
@@ -11610,7 +11610,7 @@ export class ExternDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_externDeclaration; }
+	// number { return P4grammarParser.RULE_externDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterExternDeclaration) {
@@ -11645,7 +11645,7 @@ export class MethodPrototypesContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_methodPrototypes; }
+	// number { return P4grammarParser.RULE_methodPrototypes; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterMethodPrototypes) {
@@ -11688,7 +11688,7 @@ export class FunctionPrototypeContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_functionPrototype; }
+	// number { return P4grammarParser.RULE_functionPrototype; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterFunctionPrototype) {
@@ -11733,7 +11733,7 @@ export class MethodPrototypeContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_methodPrototype; }
+	// number { return P4grammarParser.RULE_methodPrototype; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterMethodPrototype) {
@@ -11777,7 +11777,7 @@ export class TypeRefContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_typeRef; }
+	// number { return P4grammarParser.RULE_typeRef; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTypeRef) {
@@ -11812,7 +11812,7 @@ export class NamedTypeContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_namedType; }
+	// number { return P4grammarParser.RULE_namedType; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterNamedType) {
@@ -11847,7 +11847,7 @@ export class PrefixedTypeContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_prefixedType; }
+	// number { return P4grammarParser.RULE_prefixedType; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterPrefixedType) {
@@ -11879,7 +11879,7 @@ export class TypeNameContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_typeName; }
+	// number { return P4grammarParser.RULE_typeName; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTypeName) {
@@ -11914,7 +11914,7 @@ export class TupleTypeContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_tupleType; }
+	// number { return P4grammarParser.RULE_tupleType; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTupleType) {
@@ -11951,7 +11951,7 @@ export class HeaderStackTypeContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_headerStackType; }
+	// number { return P4grammarParser.RULE_headerStackType; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterHeaderStackType) {
@@ -11988,7 +11988,7 @@ export class SpecializedTypeContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_specializedType; }
+	// number { return P4grammarParser.RULE_specializedType; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSpecializedType) {
@@ -12030,7 +12030,7 @@ export class BaseTypeContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_baseType; }
+	// number { return P4grammarParser.RULE_baseType; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterBaseType) {
@@ -12066,7 +12066,7 @@ export class TypeOrVoidContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_typeOrVoid; }
+	// number { return P4grammarParser.RULE_typeOrVoid; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTypeOrVoid) {
@@ -12100,7 +12100,7 @@ export class OptTypeParametersContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_optTypeParameters; }
+	// number { return P4grammarParser.RULE_optTypeParameters; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterOptTypeParameters) {
@@ -12136,7 +12136,7 @@ export class TypeParameterListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_typeParameterList; }
+	// number { return P4grammarParser.RULE_typeParameterList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTypeParameterList) {
@@ -12173,7 +12173,7 @@ export class TypeArgContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_typeArg; }
+	// number { return P4grammarParser.RULE_typeArg; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTypeArg) {
@@ -12209,7 +12209,7 @@ export class TypeArgumentListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_typeArgumentList; }
+	// number { return P4grammarParser.RULE_typeArgumentList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTypeArgumentList) {
@@ -12243,7 +12243,7 @@ export class RealTypeArgContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_realTypeArg; }
+	// number { return P4grammarParser.RULE_realTypeArg; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterRealTypeArg) {
@@ -12282,7 +12282,7 @@ export class RealTypeArgumentListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_realTypeArgumentList; }
+	// number { return P4grammarParser.RULE_realTypeArgumentList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterRealTypeArgumentList) {
@@ -12327,7 +12327,7 @@ export class TypeDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_typeDeclaration; }
+	// number { return P4grammarParser.RULE_typeDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTypeDeclaration) {
@@ -12368,7 +12368,7 @@ export class DerivedTypeDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_derivedTypeDeclaration; }
+	// number { return P4grammarParser.RULE_derivedTypeDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterDerivedTypeDeclaration) {
@@ -12409,7 +12409,7 @@ export class HeaderTypeDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_headerTypeDeclaration; }
+	// number { return P4grammarParser.RULE_headerTypeDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterHeaderTypeDeclaration) {
@@ -12450,7 +12450,7 @@ export class StructTypeDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_structTypeDeclaration; }
+	// number { return P4grammarParser.RULE_structTypeDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterStructTypeDeclaration) {
@@ -12491,7 +12491,7 @@ export class HeaderUnionDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_headerUnionDeclaration; }
+	// number { return P4grammarParser.RULE_headerUnionDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterHeaderUnionDeclaration) {
@@ -12526,7 +12526,7 @@ export class StructFieldListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_structFieldList; }
+	// number { return P4grammarParser.RULE_structFieldList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterStructFieldList) {
@@ -12565,7 +12565,7 @@ export class StructFieldContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_structField; }
+	// number { return P4grammarParser.RULE_structField; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterStructField) {
@@ -12613,7 +12613,7 @@ export class EnumDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_enumDeclaration; }
+	// number { return P4grammarParser.RULE_enumDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterEnumDeclaration) {
@@ -12649,7 +12649,7 @@ export class SpecifiedIdentifierListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_specifiedIdentifierList; }
+	// number { return P4grammarParser.RULE_specifiedIdentifierList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSpecifiedIdentifierList) {
@@ -12685,7 +12685,7 @@ export class SpecifiedIdentifierContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_specifiedIdentifier; }
+	// number { return P4grammarParser.RULE_specifiedIdentifier; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSpecifiedIdentifier) {
@@ -12720,7 +12720,7 @@ export class ErrorDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_errorDeclaration; }
+	// number { return P4grammarParser.RULE_errorDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterErrorDeclaration) {
@@ -12755,7 +12755,7 @@ export class MatchKindDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_matchKindDeclaration; }
+	// number { return P4grammarParser.RULE_matchKindDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterMatchKindDeclaration) {
@@ -12791,7 +12791,7 @@ export class IdentifierListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_identifierList; }
+	// number { return P4grammarParser.RULE_identifierList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterIdentifierList) {
@@ -12834,7 +12834,7 @@ export class TypedefDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_typedefDeclaration; }
+	// number { return P4grammarParser.RULE_typedefDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTypedefDeclaration) {
@@ -12881,7 +12881,7 @@ export class AssignmentOrMethodCallStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_assignmentOrMethodCallStatement; }
+	// number { return P4grammarParser.RULE_assignmentOrMethodCallStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterAssignmentOrMethodCallStatement) {
@@ -12911,7 +12911,7 @@ export class EmptyStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_emptyStatement; }
+	// number { return P4grammarParser.RULE_emptyStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterEmptyStatement) {
@@ -12942,7 +12942,7 @@ export class ExitStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_exitStatement; }
+	// number { return P4grammarParser.RULE_exitStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterExitStatement) {
@@ -12976,7 +12976,7 @@ export class ReturnStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_returnStatement; }
+	// number { return P4grammarParser.RULE_returnStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterReturnStatement) {
@@ -13021,7 +13021,7 @@ export class ConditionalStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_conditionalStatement; }
+	// number { return P4grammarParser.RULE_conditionalStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterConditionalStatement) {
@@ -13061,7 +13061,7 @@ export class DirectApplicationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_directApplication; }
+	// number { return P4grammarParser.RULE_directApplication; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterDirectApplication) {
@@ -13114,7 +13114,7 @@ export class StatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_statement; }
+	// number { return P4grammarParser.RULE_statement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterStatement) {
@@ -13151,7 +13151,7 @@ export class BlockStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_blockStatement; }
+	// number { return P4grammarParser.RULE_blockStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterBlockStatement) {
@@ -13186,7 +13186,7 @@ export class StatOrDeclListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_statOrDeclList; }
+	// number { return P4grammarParser.RULE_statOrDeclList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterStatOrDeclList) {
@@ -13226,7 +13226,7 @@ export class SwitchStatementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_switchStatement; }
+	// number { return P4grammarParser.RULE_switchStatement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSwitchStatement) {
@@ -13261,7 +13261,7 @@ export class SwitchCasesContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_switchCases; }
+	// number { return P4grammarParser.RULE_switchCases; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSwitchCases) {
@@ -13297,7 +13297,7 @@ export class SwitchCaseContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_switchCase; }
+	// number { return P4grammarParser.RULE_switchCase; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSwitchCase) {
@@ -13330,7 +13330,7 @@ export class SwitchLabelContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_switchLabel; }
+	// number { return P4grammarParser.RULE_switchLabel; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterSwitchLabel) {
@@ -13371,7 +13371,7 @@ export class StatementOrDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_statementOrDeclaration; }
+	// number { return P4grammarParser.RULE_statementOrDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterStatementOrDeclaration) {
@@ -13412,7 +13412,7 @@ export class TableDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_tableDeclaration; }
+	// number { return P4grammarParser.RULE_tableDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTableDeclaration) {
@@ -13447,7 +13447,7 @@ export class TablePropertyListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_tablePropertyList; }
+	// number { return P4grammarParser.RULE_tablePropertyList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTablePropertyList) {
@@ -13504,7 +13504,7 @@ export class TablePropertyContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_tableProperty; }
+	// number { return P4grammarParser.RULE_tableProperty; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterTableProperty) {
@@ -13539,7 +13539,7 @@ export class KeyElementListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_keyElementList; }
+	// number { return P4grammarParser.RULE_keyElementList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterKeyElementList) {
@@ -13579,7 +13579,7 @@ export class KeyElementContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_keyElement; }
+	// number { return P4grammarParser.RULE_keyElement; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterKeyElement) {
@@ -13615,7 +13615,7 @@ export class ActionListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_actionList; }
+	// number { return P4grammarParser.RULE_actionList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterActionList) {
@@ -13655,7 +13655,7 @@ export class ActionRefContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_actionRef; }
+	// number { return P4grammarParser.RULE_actionRef; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterActionRef) {
@@ -13695,7 +13695,7 @@ export class EntryContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_entry; }
+	// number { return P4grammarParser.RULE_entry; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterEntry) {
@@ -13737,7 +13737,7 @@ export class ActionBindingContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_actionBinding; }
+	// number { return P4grammarParser.RULE_actionBinding; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterActionBinding) {
@@ -13772,7 +13772,7 @@ export class EntriesListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_entriesList; }
+	// number { return P4grammarParser.RULE_entriesList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterEntriesList) {
@@ -13816,7 +13816,7 @@ export class ActionDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_actionDeclaration; }
+	// number { return P4grammarParser.RULE_actionDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterActionDeclaration) {
@@ -13858,7 +13858,7 @@ export class VariableDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_variableDeclaration; }
+	// number { return P4grammarParser.RULE_variableDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterVariableDeclaration) {
@@ -13902,7 +13902,7 @@ export class ConstantDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_constantDeclaration; }
+	// number { return P4grammarParser.RULE_constantDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterConstantDeclaration) {
@@ -13935,7 +13935,7 @@ export class OptInitializerContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_optInitializer; }
+	// number { return P4grammarParser.RULE_optInitializer; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterOptInitializer) {
@@ -13967,7 +13967,7 @@ export class InitializerContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_initializer; }
+	// number { return P4grammarParser.RULE_initializer; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterInitializer) {
@@ -14002,7 +14002,7 @@ export class FunctionDeclarationContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_functionDeclaration; }
+	// number { return P4grammarParser.RULE_functionDeclaration; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterFunctionDeclaration) {
@@ -14034,7 +14034,7 @@ export class ArgumentListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_argumentList; }
+	// number { return P4grammarParser.RULE_argumentList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterArgumentList) {
@@ -14070,7 +14070,7 @@ export class NonEmptyArgListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_nonEmptyArgList; }
+	// number { return P4grammarParser.RULE_nonEmptyArgList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterNonEmptyArgList) {
@@ -14107,7 +14107,7 @@ export class ArgumentContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_argument; }
+	// number { return P4grammarParser.RULE_argument; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterArgument) {
@@ -14143,7 +14143,7 @@ export class ExpressionListContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_expressionList; }
+	// number { return P4grammarParser.RULE_expressionList; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterExpressionList) {
@@ -14178,7 +14178,7 @@ export class PrefixedNonTypeNameContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_prefixedNonTypeName; }
+	// number { return P4grammarParser.RULE_prefixedNonTypeName; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterPrefixedNonTypeName) {
@@ -14230,7 +14230,7 @@ export class LvalueContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_lvalue; }
+	// number { return P4grammarParser.RULE_lvalue; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterLvalue) {
@@ -14340,7 +14340,7 @@ export class ExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_expression; }
+	// number { return P4grammarParser.RULE_expression; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterExpression) {
@@ -14371,7 +14371,7 @@ export class Type_or_idContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_type_or_id; }
+	// number { return P4grammarParser.RULE_type_or_id; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterType_or_id) {
@@ -14409,7 +14409,7 @@ export class ParserStateConditionContext extends ParserRuleContext {
 		super(parent, invokingState);
 	}
 	// @Override
-	public get ruleIndex(): number { return P4grammarParser.RULE_parserStateCondition; }
+	// // number { return P4grammarParser.RULE_parserStateCondition; }
 	// @Override
 	public enterRule(listener: P4grammarListener): void {
 		if (listener.enterParserStateCondition) {
