@@ -137,6 +137,7 @@ documents.onDidClose(e => {
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent(change => {
 	validateTextDocument(change.document);
+	// let mySettings = await getDocumentSettings(change.document.uri);
 	getDataFromAntlr(documents.get(change.document.uri)!);
 });
 
@@ -193,37 +194,40 @@ connection.onDidChangeWatchedFiles(_change => {
 });
 // nincs ra szukseg
 // pozicio szerint kell keresni a szintaxis faban, nem szo szerint
-const getWordFromLine = (text: string, index: number): string => {
-	const first = text.lastIndexOf(' ', index);
-    const last = text.indexOf(' ', index);
-    return text.substring(first !== -1 ? first : 0, last !== -1 ? last : text.length);
-};
+// const getWordFromLine = (text: string, index: number): string => {
+// 	const first = text.lastIndexOf(' ', index);
+//     const last = text.indexOf(' ', index);
+//     return text.substring(first !== -1 ? first : 0, last !== -1 ? last : text.length);
+// };
 
 connection.onHover(({textDocument, position}: HoverParams): Hover | undefined => {
 
 	const document = documents.get(textDocument.uri);
-	const start = {
-		line: position.line,
-		character: 0
-	};
+	const currentIndexFromDocument: number | undefined  = document?.offsetAt(position);
+	// const start = {
+	// 	line: position.line,
+	// 	character: 0
+	// };
 
-	const end = {
-		line: position.line + 1,
-		character: 0
-	};
+	// const end = {
+	// 	line: position.line + 1,
+	// 	character: 0
+	// };
 
-	const currentLineText = document!.getText({start, end});
-	const currentIndex = document!.offsetAt(position) - document!.offsetAt(start);
-	const currentWord = getWordFromLine(currentLineText, currentIndex);
+	// const currentLineText = document!.getText({start, end});
+	// const currentIndex: number = document!.offsetAt(position) - document!.offsetAt(start);
+	// const currentWord = getWordFromLine(currentLineText, currentIndex);
 	
 	// const MY_LISTENER = new MyListener();
 	// const content = MY_LISTENER.visitTerminal(currentWord);
 
 	// const MY_LISTENER = new MyListener();
-	const finalContent = MY_LISTENER!.getHoverContent(currentWord);
+	// let currentPosition = position.character;
 
-	if(currentWord !== ''){
-		return finalContent;
+	
+	const finalContent = MY_LISTENER!.getHoverContent(currentIndexFromDocument!);
+
+	return finalContent;
 		// return {
 		// 	contents: {
 		// 		kind: 'markdown',
@@ -234,8 +238,6 @@ connection.onHover(({textDocument, position}: HoverParams): Hover | undefined =>
 		// 		].join('\n')
 		// 	}
 		// }
-	}
-	return undefined;
 });
 
 
