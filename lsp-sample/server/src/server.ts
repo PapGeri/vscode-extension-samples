@@ -23,7 +23,8 @@ import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 
-import { getDataFromAntlr, MY_LISTENER } from './compiler/antlr4ts_proxy';
+import { getDataFromAntlr } from './compiler/antlr4ts_proxy';
+import { getHoverContent } from './provider/hoverProvider';
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -225,9 +226,9 @@ connection.onHover(({textDocument, position}: HoverParams): Hover | undefined =>
 	// let currentPosition = position.character;
 
 	
-	const finalContent = MY_LISTENER!.getHoverContent(currentIndexFromDocument!);
+	const finalContent: Hover | undefined = getHoverContent(currentIndexFromDocument!);
 
-	return finalContent;
+	return finalContent? finalContent : undefined;
 		// return {
 		// 	contents: {
 		// 		kind: 'markdown',
