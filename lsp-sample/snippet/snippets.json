@@ -2,8 +2,8 @@
 	"Header snippet": {
 		"prefix": "header",
 		"body": [
-			"header ${1:name} {",
-			"\t${2:size} ${3:field};",
+			"header ${1:header_name} {",
+			"\t${2:size_name} ${3:field_name};",
 			"\t$0",
 			"}"
 		],
@@ -11,27 +11,59 @@
 	},
 	"Parser snippet": {
 		"prefix": "parser",
-		"body": [],
+		"body": [
+			"parser ${1:parser_name} (packet_in ${2:packet_name} ",
+			"\t\t out $3 $4,",
+			"\t\t inout $5 $6",
+			"\t\t inout $7 $8) {",
+			"\t$0",
+			"}"
+		],
 		"description": "Parser (finite-state machines) describe the permitted header sequences within received packets."
 	},
 	"Table snippet": {
 		"prefix": "table",
-		"body": [],
+		"body": [
+			"table ${1:table_name} {",
+			"\tkey = { $2 : $3 }",
+			"\taction = {",
+			"\t\t${4:action_name};",
+			"\t\t$0",
+			"\t}",
+			"\tsize = ${5:size}",
+			"\tdefault_action = ${6:default_action_name}",
+			"}"
+		],
 		"description": "Tables associate keys to actions. P4 tables generalize traditional forwarding tables; they can be used to implement routing tables, flow lookup tables, access-control lists, etc."
 	},
 	"Control snippet": {
 		"prefix": "control",
-		"body": [],
+		"body": [
+			"control ${1:control_name} (${2|in|out|inout|packet_in|packet_out} ${3:packet_name} , ${4|in|out|inout|packet_in|packet_out} ${5:variable_type} ${6:variable_name}) {",
+			"\tapply {",
+			"\t\t$0",
+			"\t}",
+			"}"
+		],
 		"description": "Control flow is expressed as an imperative program describing the data-dependent packet processing within a pipeline, including the data-dependent sequence of match-action unit invocations."
 	},
 	"Action snippet": {
 		"prefix": "action",
-		"body": [],
+		"body": [
+			"actions = {",
+			"\t${1:action_name}",
+			"\t$0",
+			"}"
+		],
 		"description": "Actions describe how packet header fields and metadata are manipulated."
 	},
 	"Struct snippet": {
 		"prefix": "struct",
-		"body": [],
+		"body": [
+			"struct ${struct_name} {",
+			"\t${member_type}\t${member_name}",
+			"\t$0"
+		],
 		"description": "Structure data collection"
 	}
 }
