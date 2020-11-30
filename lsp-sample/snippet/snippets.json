@@ -1,0 +1,37 @@
+{
+	"Header snippet": {
+		"prefix": "header",
+		"body": [
+			"header ${1:name} {",
+			"\t${2:size} ${3:field};",
+			"\t$0",
+			"}"
+		],
+		"description": "Headers describe the format (the set of fields and their sizes) of each header within a packet."
+	},
+	"Parser snippet": {
+		"prefix": "parser",
+		"body": [],
+		"description": "Parser (finite-state machines) describe the permitted header sequences within received packets."
+	},
+	"Table snippet": {
+		"prefix": "table",
+		"body": [],
+		"description": "Tables associate keys to actions. P4 tables generalize traditional forwarding tables; they can be used to implement routing tables, flow lookup tables, access-control lists, etc."
+	},
+	"Control snippet": {
+		"prefix": "control",
+		"body": [],
+		"description": "Control flow is expressed as an imperative program describing the data-dependent packet processing within a pipeline, including the data-dependent sequence of match-action unit invocations."
+	},
+	"Action snippet": {
+		"prefix": "action",
+		"body": [],
+		"description": "Actions describe how packet header fields and metadata are manipulated."
+	},
+	"Struct snippet": {
+		"prefix": "struct",
+		"body": [],
+		"description": "Structure data collection"
+	}
+}

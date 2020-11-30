@@ -25,6 +25,7 @@ import {
 
 import { getDataFromAntlr } from './compiler/antlr4ts_proxy';
 import { getHoverContent } from './provider/hoverProvider';
+import { getCompletionItems } from './provider/completionProvider';
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -59,7 +60,7 @@ connection.onInitialize((params: InitializeParams) => {
 			textDocumentSync: TextDocumentSyncKind.Incremental,
 			// Tell the client that this server supports code completion.
 			completionProvider: {
-				resolveProvider: true
+				resolveProvider: true 
 			},
 			hoverProvider: true,
 		}
@@ -186,101 +187,38 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	}
 
 	// Send the computed diagnostics to VSCode.
-	connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
+	//connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
 }
 
 connection.onDidChangeWatchedFiles(_change => {
 	// Monitored files have change in VSCode
 	connection.console.log('We received an file change event');
 });
-// nincs ra szukseg
-// pozicio szerint kell keresni a szintaxis faban, nem szo szerint
-// const getWordFromLine = (text: string, index: number): string => {
-// 	const first = text.lastIndexOf(' ', index);
-//     const last = text.indexOf(' ', index);
-//     return text.substring(first !== -1 ? first : 0, last !== -1 ? last : text.length);
-// };
 
 connection.onHover(({textDocument, position}: HoverParams): Hover | undefined => {
 
 	const document = documents.get(textDocument.uri);
 	const currentIndexFromDocument: number | undefined  = document?.offsetAt(position);
-	// const start = {
-	// 	line: position.line,
-	// 	character: 0
-	// };
-
-	// const end = {
-	// 	line: position.line + 1,
-	// 	character: 0
-	// };
-
-	// const currentLineText = document!.getText({start, end});
-	// const currentIndex: number = document!.offsetAt(position) - document!.offsetAt(start);
-	// const currentWord = getWordFromLine(currentLineText, currentIndex);
-	
-	// const MY_LISTENER = new MyListener();
-	// const content = MY_LISTENER.visitTerminal(currentWord);
-
-	// const MY_LISTENER = new MyListener();
-	// let currentPosition = position.character;
-
 	
 	const finalContent: Hover | undefined = getHoverContent(currentIndexFromDocument!);
 
 	return finalContent? finalContent : undefined;
-		// return {
-		// 	contents: {
-		// 		kind: 'markdown',
-		// 		value: [
-		// 			`# Text is: ${currentLineText}`,
-		// 			`## Index is: ${currentIndex}`,
-		// 			`### Current Word is: ${currentWord}`
-		// 		].join('\n')
-		// 	}
-		// }
 });
 
 
 // This handler provides the initial list of the completion items.
-connection.onCompletion(
-	(_textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
-		// The pass parameter contains the position of the text document in
-		// which code complete got requested. For the example we ignore this
-		// info and always provide the same completion items.
-		return [
-			{
-				label: 'TypeScript',
-				kind: CompletionItemKind.Text,
-				data: 1
-			},
-			{
-				label: 'JavaScript',
-				kind: CompletionItemKind.Text,
-				data: 2
-			}
-		];
-	}
-);
+connection.onCompletion(({textDocument, position}: TextDocumentPositionParams): CompletionItem[] => {
 
-// This handler resolves additional information for the item selected in
-// the completion list.
-connection.onCompletionResolve(
-	(item: CompletionItem): CompletionItem => {
-		if (item.data === 1) {
-			item.detail = 'TypeScript details';
-			item.documentation = 'TypeScript documentation';
-		} else if (item.data === 2) {
-			item.detail = 'JavaScript details';
-			item.documentation = 'JavaScript documentation';
-		}
-		return item;
-	}
-);
+		// const document = documents.get(_textDocumentPosition.textDocument.uri);
+		// const pos = document?.offsetAt(_textDocumentPosition.position);
+		const document = documents.get(textDocument.uri);
 
-// Make the text document manager listen on the connection
-// for open, change and close text document events
+		const finalCompletion: CompletionItem[] = getCompletionItems(document, position);
+
+		return finalCompletion;
+});
+
+
 documents.listen(connection);
 
-// Listen on the connection
 connection.listen();

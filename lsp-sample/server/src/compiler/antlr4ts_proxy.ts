@@ -19,10 +19,5 @@ export function getDataFromAntlr(document: TextDocument) {
 	parser.buildParseTree = true;
 	const tree = parser.start();
 
-	let ruleNames: string[] = parser.ruleNames;
-
-	ParseTreeWalker.DEFAULT.walk(MY_LISTENER, tree)
-
-	// const walker = new ParseTreeWalker();
-	// walker.walk(MY_LISTENER, tree);
+	ParseTreeWalker.DEFAULT.walk(MY_LISTENER, tree);
 }
