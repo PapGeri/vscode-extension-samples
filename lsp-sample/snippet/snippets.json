@@ -60,8 +60,8 @@
 	"Struct snippet": {
 		"prefix": "struct",
 		"body": [
-			"struct ${struct_name} {",
-			"\t${member_type}\t${member_name}",
+			"struct ${1:struct_name} {",
+			"\t${2:member_type}\t${3:member_name}",
 			"\t$0"
 		],
 		"description": "Structure data collection"
