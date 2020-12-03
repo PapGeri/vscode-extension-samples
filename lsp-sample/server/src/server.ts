@@ -11,12 +11,12 @@ import {
 	InitializeParams,
 	DidChangeConfigurationNotification,
 	CompletionItem,
-	CompletionItemKind,
 	TextDocumentPositionParams,
 	TextDocumentSyncKind,
 	InitializeResult,
 	HoverParams,
-	Hover
+	Hover,
+	PublishDiagnosticsParams
 } from 'vscode-languageserver';
 
 import {
@@ -24,8 +24,8 @@ import {
 } from 'vscode-languageserver-textdocument';
 
 import { getDataFromAntlr } from './compiler/antlr4ts_proxy';
-import { getHoverContent } from './provider/hoverProvider';
-import { getCompletionItems } from './provider/completionProvider';
+import { getHoverContent } from './provider/HoverProvider';
+import { getCompletionItems } from './provider/CompletionProvider';
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -59,9 +59,7 @@ connection.onInitialize((params: InitializeParams) => {
 		capabilities: {
 			textDocumentSync: TextDocumentSyncKind.Incremental,
 			// Tell the client that this server supports code completion.
-			completionProvider: {
-				resolveProvider: true 
-			},
+			completionProvider: {},
 			hoverProvider: true,
 		}
 	};
@@ -139,7 +137,6 @@ documents.onDidClose(e => {
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent(change => {
 	validateTextDocument(change.document);
-	// let mySettings = await getDocumentSettings(change.document.uri);
 	getDataFromAntlr(documents.get(change.document.uri)!);
 });
 
@@ -211,12 +208,14 @@ connection.onCompletion(({textDocument, position}: TextDocumentPositionParams): 
 
 		// const document = documents.get(_textDocumentPosition.textDocument.uri);
 		// const pos = document?.offsetAt(_textDocumentPosition.position);
-		const document = documents.get(textDocument.uri);
+		//const document = documents.get(textDocument.uri);
 
-		const finalCompletion: CompletionItem[] = getCompletionItems(document, position);
+		const finalCompletion: CompletionItem[] = getCompletionItems();
 
 		return finalCompletion;
 });
+
+connection.sendDiagnostics()
 
 
 documents.listen(connection);
