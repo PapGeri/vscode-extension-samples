@@ -15,8 +15,7 @@ import {
 	TextDocumentSyncKind,
 	InitializeResult,
 	HoverParams,
-	Hover,
-	PublishDiagnosticsParams
+	Hover
 } from 'vscode-languageserver';
 
 import {
@@ -26,6 +25,8 @@ import {
 import { getDataFromAntlr } from './compiler/antlr4ts_proxy';
 import { getHoverContent } from './provider/HoverProvider';
 import { getCompletionItems } from './provider/CompletionProvider';
+// import { SignatureHelpProvider } from './provider/SignatureHelpProvider';
+import { CompletionResolveProvider } from './provider/CompletionResolveProvider';
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -59,8 +60,15 @@ connection.onInitialize((params: InitializeParams) => {
 		capabilities: {
 			textDocumentSync: TextDocumentSyncKind.Incremental,
 			// Tell the client that this server supports code completion.
-			completionProvider: {},
+			completionProvider: {
+				resolveProvider: true,
+			},
 			hoverProvider: true,
+			signatureHelpProvider: {
+				triggerCharacters: [
+					'('
+				],
+			}
 		}
 	};
 	if (hasWorkspaceFolderCapability) {
@@ -135,8 +143,9 @@ documents.onDidClose(e => {
 
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
-documents.onDidChangeContent(change => {
+documents.onDidChangeContent(async change => {
 	validateTextDocument(change.document);
+	await sleep(3000);
 	getDataFromAntlr(documents.get(change.document.uri)!);
 });
 
@@ -198,7 +207,6 @@ connection.onHover(({textDocument, position}: HoverParams): Hover | undefined =>
 	const currentIndexFromDocument: number | undefined  = document?.offsetAt(position);
 	
 	const finalContent: Hover | undefined = getHoverContent(currentIndexFromDocument!);
-
 	return finalContent? finalContent : undefined;
 });
 
@@ -206,17 +214,21 @@ connection.onHover(({textDocument, position}: HoverParams): Hover | undefined =>
 // This handler provides the initial list of the completion items.
 connection.onCompletion(({textDocument, position}: TextDocumentPositionParams): CompletionItem[] => {
 
-		// const document = documents.get(_textDocumentPosition.textDocument.uri);
-		// const pos = document?.offsetAt(_textDocumentPosition.position);
-		//const document = documents.get(textDocument.uri);
-
-		const finalCompletion: CompletionItem[] = getCompletionItems();
-
-		return finalCompletion;
+	const finalCompletion: CompletionItem[] = getCompletionItems();
+	return finalCompletion;
 });
 
-connection.sendDiagnostics()
+connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
+	
+	let currentItem: CompletionItem = CompletionResolveProvider(item);
+	return currentItem;
+});
 
+// connection.onSignatureHelp(SignatureHelpProvider);
+
+async function sleep(ms: number) {
+	return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 documents.listen(connection);
 

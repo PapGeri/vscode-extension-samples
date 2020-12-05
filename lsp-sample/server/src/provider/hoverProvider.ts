@@ -87,7 +87,8 @@ function getChildContent(rule: RuleNode | undefined): string {
 
 	let resultStr: string = '';
 	let newListener = new HoverListener();
-	
+	let newList: string[] = newListener.textList;
+
 	let goodNode: ParseTree | undefined;
 
 	for(let i = 0; i < rule!.childCount; i++){
@@ -98,8 +99,22 @@ function getChildContent(rule: RuleNode | undefined): string {
 	}
 
 	ParseTreeWalker.DEFAULT.walk(newListener, goodNode!);
-	for(let terminal of newListener.textList) {
-		resultStr += terminal + ' ';
+
+	// itt azt nezem hogy a kovetkezo elem az egy karakterbol all-e hogy jol nezzen ki a hover spaceingje
+	// jobb lenne egy listaba kigyujteni az elemeket ahol nem kell space pl. (, ), ;, ,,
+	// WIP == needs working
+
+	// talan kulon function ami ezt megcsinalja, valahogy newLine-t ha { vagy ; a krarketer
+
+	for(let index = 0; index < newList.length; index++){
+		if(index === 0){
+			resultStr += newList[index];
+		}
+		else if(newList[index].length < 2) {
+			resultStr += newList[index];
+		} else {
+			resultStr += ' ' + newList[index];
+		}
 	}
 
 	return resultStr;

@@ -8,7 +8,7 @@ export class CompletionListener implements P4grammarListener {
 
 	constructor(){}
 
-	visitTerminal(nod: TerminalNode): void {}
+	visitTerminal(node: TerminalNode): void {}
 
 	enterStart(ctx: StartContext): void {
 		this.completionItemList = new Array<string>();
