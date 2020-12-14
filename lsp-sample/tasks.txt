@@ -1,0 +1,59 @@
+12/1/2020:
+
+	- Teszteles es dolgozat iras
+	- REsolve PIPA /////// DocumentHighlightProvider \\\\\\ SIgnatureHelper, megnezni hogy a '(' elotti szo melyik kulcsszo es az ahoz tartozo kis alap doksit visszaadni
+	- Hogy lehet ezeket boviteni meg (Hover pl.)
+	- Irni plusz Listenereket ( szetszedni kulon listenerekre, feature szerint ) -- pipa
+	- Teszteles top priority (Mokkolni a klienst)!!!!
+	- Diagnostics (szintaxis, olyan variable ami nincs deklaralva pl., vagy mint pl a hovernel) => FROM ME: talan ugy kene hogy osszegyujtom megint a variable-eket, es ami valahol nem volt deklaralva azt alahuzom...
+			// if something is written in the lvalue vagy rvalue(?) which has no declaration than alahuzas
+	- Okositason gondolkodni
+
+	=============================================================================
+	
+	- Vazlat a doksihoz
+	 	fel legyenek sorolva a dolgok amikre tamaszkodok, miket hasznalok (antlr, lsp)
+		=> felhasznalo doks, fejlesztoi doksi
+			: felhasznaloi ==> telepites, inditas, hasznalat bemuatatasa (mit csinaltam, hogy lehet kiprobalni), vegso eredmeny bemutatasa, scrshotok
+			: fejlesztoi  ==> architektura, fo komponensek, diagram!, melyik feladat hol tortenik, hatterben mi tortenik
+		=> unit teszteles + (hogyan lehet elinditani a tesztelest {ezt roviden, max 1 screenshot})
+		=> hasznalati esetek -> ha.. akkor... ( kovetelmenyleiras )
+		- tartalomjegyzek beallitasa stb. (mindent automatizalni) (LaTeX talan, template-el formalis kovetelmenyeket bele tudom tenni)
+		https://github.com/mcserep/elteikthesis
+
+		- Idealis: kiexportalni az extensiont egy telepito fajlba, (kod konyvtarat bemasolni a vscodehoz talan), VSIX
+
+
+
+
+/// Snippet need some work, to show correctly on the documentation
+/// Resolve provider, things need a good documentation maybe
+/// is sleep needed in the server???
+/// refactor resolver to (ctx name, {type, ctx}) ==> in provider (if (map.has(name))) stb.
+/// handling errors : https://stackoverflow.com/questions/18132078/handling-errors-in-antlr4 => make an errorListener and push them to diagnostics or to hover as well
+
+=================================================================================================
+
+12/08/2020:
+
+	- Hover error listeneres, + diagnostics
+	- Unit teszt: kulon p4 file minden teszt-re, ezeket leparsolni antlr-el es onnan kapok rulecontextet
+	- Diagnosztika + teszt
+	- Uj dolgozat osztalyozas pdf https://www.inf.elte.hu/dstore/document/257/PTI_BSc_szakdoli_uj.pdf 3. pont
+	- 50k parser vagy header teszt, 5000 valtozo deklaracio generalas pl. es azt tesztelni (nagy mennyisegu adatok)
+
+
+\\\ diagnosztikanal rossz valahogy a range... Talan a grammar rossz, vagy a fajl beolvasas... Egybre rakja mindent, nem veszi figyelembe a newline-t
+
+
+
+
+
+12/14/2020:
+
+ParseruleContext-nek _start es _stop tokenjeinek a start es endjeit megnezni
+rekurziv error talan, esetleg valtozo aminek nincs deklaracioja ==> 
+==>van declarationContext ugyanezzel a nevvel (valtozo hasznalatokat es deklaraciokat kigyujteni, es olyan hasznalatot keresni amihez nem tartozik deklracio)
+==> expressionContext a hasznalat,(assignment or methodcall contextek) ,es a kulonbozo declarationContextek a deklaraciok
+gondolkodni konnyu hibakeresesen a mostani helyett (legyen sajat) ==> indexek atnezese
+felhasznaloi doksi => a feature-ok, fejlesztoibe => tesztekrol + architektura

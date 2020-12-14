@@ -9,7 +9,7 @@ export function CompletionResolveProvider(item: CompletionItem): CompletionItem 
 	let helperMap: Map<RuleContext | undefined, ContextInfo> | undefined = RESOLVE_LISTENER?.compResolvMap;
 
 	for(let [context, info] of helperMap!) {
-		if(item.label == info.name) {
+		if(item.label === info.name) {
 			item.detail = `(${info.type}) ` + getDeclarationText(context);
 			item.documentation = getDocumentation(info);
 		}
@@ -18,32 +18,37 @@ export function CompletionResolveProvider(item: CompletionItem): CompletionItem 
 	return item;
 }
 
-function getDeclarationText(context: RuleContext | undefined): string {
+export function getDeclarationText(context: RuleContext | undefined): string {
 
-	let resultText: string = '';
 	let tokenTextListener = new CompletionResolveListener();
 	let allTokenText: string[] = tokenTextListener.tokenTextList;
 
-	ParseTreeWalker.DEFAULT.walk(tokenTextListener, context!);
+	let walker: ParseTreeWalker = new ParseTreeWalker();
+	walker.walk(tokenTextListener, context!);
 
-	for(let index = 0; index < allTokenText.length; index++){
-		let currentToken: string = allTokenText[index];
-		if(index === 0){
-			resultText += currentToken;
-		}
-		else if(currentToken.length < 2) {
-			resultText += currentToken;
+	return getFormattedString(allTokenText);
+}
+
+export function getFormattedString(list: string[]): string {
+
+	let result: string = '';
+
+	for(let i = 0; i < list.length; i++) {
+		if(i === 0){
+			result += list[i];
+		} else if(list[i].length < 2) {
+			result += list[i];
 		} else {
-			resultText += ' ' + currentToken;
+			result += ' ' + list[i];
 		}
 	}
 
-	return resultText;
+	return result;
 }
 
-function getDocumentation(type: ContextInfo): string{
+export function getDocumentation(type: ContextInfo): string{
 
-	let documentation: string = '';
+	let documentation: string | undefined;
 	switch(type.type) {
 		case 'action': {
 			documentation = 'This is an action declaration';

@@ -15,7 +15,11 @@ export class CompletionListener implements P4grammarListener {
 	}
 
 	enterName(ctx: NameContext): void {
-		this.completionItemList.push(ctx.getChild(ctx.childCount -1).text);
+		if(ctx.childCount == 0){
+			this.completionItemList.push(ctx.text);
+		} else {
+			this.completionItemList.push(ctx.getChild(ctx.childCount -1).text);
+		}
 	}
 
 	get completionList(): string[] {

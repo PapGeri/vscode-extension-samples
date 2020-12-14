@@ -6,12 +6,15 @@ import { ParseTreeWalker } from 'antlr4ts/tree/ParseTreeWalker';
 import { HoverListener } from '../listeners/HoverListener';
 import { CompletionListener } from '../listeners/CompletionListener';
 import { CompletionResolveListener } from '../listeners/CompletionResolveListener';
+import { MyErrorListener } from './antlr4ts_error_listener';
+import { Diagnostic } from 'vscode-languageserver';
 
 export let HOVER_LISTENER: HoverListener | null = null;
 export let COMPLETION_LISTENER: CompletionListener | null = null;
 export let RESOLVE_LISTENER: CompletionResolveListener | null = null;
+export let ERROR_LISTENER: MyErrorListener | null = null;
 
-export function getDataFromAntlr(document: TextDocument) {
+export function getDataFromAntlr(document: TextDocument): void {
 	if(HOVER_LISTENER === null){
 		HOVER_LISTENER = new HoverListener();
 	}
@@ -22,16 +25,33 @@ export function getDataFromAntlr(document: TextDocument) {
 
 	if(RESOLVE_LISTENER === null){
 		RESOLVE_LISTENER = new CompletionResolveListener();
-	}	
+	}
+	ERROR_LISTENER = new MyErrorListener(document);	
 
-	const lexer = new P4grammarLexer(CharStreams.fromString(document.getText()))
-	const token = new CommonTokenStream(lexer);
-	const parser = new P4grammarParser(token);
+	let lexer = new P4grammarLexer(CharStreams.fromString(document.getText()));
+
+	// lexer.removeErrorListeners();
+	// lexer.addErrorListener(ERROR_LISTENER);
+	
+	let token = new CommonTokenStream(lexer);
+	let parser = new P4grammarParser(token);
+
+	parser.removeErrorListeners();
+	parser.addErrorListener(ERROR_LISTENER);
 
 	parser.buildParseTree = true;
-	const tree = parser.start();
+	let tree = parser.start();
 
 	ParseTreeWalker.DEFAULT.walk(HOVER_LISTENER, tree);
 	ParseTreeWalker.DEFAULT.walk(COMPLETION_LISTENER, tree);
 	ParseTreeWalker.DEFAULT.walk(RESOLVE_LISTENER, tree);
+
+	// let diagnostics: Diagnostic[] = ERROR_LISTENER!.diagnostic;
+	// connection.sendDiagnostics({uri: document.uri, diagnostics});
+}
+
+export function getDiagnosticsFromAntlr(): Diagnostic[] {
+
+	let diagnostics: Diagnostic[] = ERROR_LISTENER!.diagnostic;
+	return diagnostics;
 }

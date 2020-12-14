@@ -182,6 +182,82 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
+					<string>entity.name.function.p4</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<false/>
+			<key>match</key>
+			<string>^\s*(parser)\s+(\w+)\s*(?:\()</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.p4</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.p4</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<false/>
+			<key>match</key>
+			<string>^\s*(header)\s+(\w+)\s*(?:\()</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.p4</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.p4</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<false/>
+			<key>match</key>
+			<string>^\s*(control)\s+(\w+)\s*(?:\()</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.p4</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.p4</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<false/>
+			<key>match</key>
+			<string>^\s*(table)\s+(\w+)\s*(?:\()</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.p4</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
 					<string>entity.name.section.p4</string>
 				</dict>
 				<key>3</key>
@@ -199,7 +275,7 @@
 			<key>comment</key>
 			<string>xxx</string>
 			<key>match</key>
-			<string>\b(bit|varbit|int|bytes)\b</string>
+			<string>\b(bit|varbit|int|bytes|bool|error|match_kind)\b</string>
 			<key>name</key>
 			<string>storage.type</string>
 		</dict>
@@ -207,7 +283,7 @@
 			<key>comment</key>
 			<string>xxx</string>
 			<key>match</key>
-			<string>\b(paser|control|table|action_profile|counter)\s</string>
+			<string>\b(parser|control|table|action_profile|counter)\s</string>
 			<key>name</key>
 			<string>storage.type</string>
 		</dict>
@@ -290,6 +366,30 @@
 			<string>\b(apply|valid|select|current|extract)\s(?:\()</string>
 			<key>name</key>
 			<string>support.function</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>typedef and const</string>
+			<key>match</key>
+			<string>\b(typedef|const)\b</string>
+			<key>name</key>
+			<string>entity.other.attribute-name</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>storage modifier</string>
+			<key>match</key>
+			<string>\b(direct|static|extern)\b</string>
+			<key>name</key>
+			<string>storage.modifier</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>derived types</string>
+			<key>match</key>
+			<string>\b(enum|header|struct|header_union|tuple|extern|parser|control|package)\b</string>
+			<key>name</key>
+			<string>storage.type</string>
 		</dict>
 	</array>
 	<key>scopeName</key>

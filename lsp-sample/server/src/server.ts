@@ -22,10 +22,9 @@ import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 
-import { getDataFromAntlr } from './compiler/antlr4ts_proxy';
+import { getDataFromAntlr, getDiagnosticsFromAntlr } from './compiler/antlr4ts_proxy';
 import { getHoverContent } from './provider/HoverProvider';
 import { getCompletionItems } from './provider/CompletionProvider';
-// import { SignatureHelpProvider } from './provider/SignatureHelpProvider';
 import { CompletionResolveProvider } from './provider/CompletionResolveProvider';
 
 // Create a connection for the server, using Node's IPC as a transport.
@@ -64,11 +63,6 @@ connection.onInitialize((params: InitializeParams) => {
 				resolveProvider: true,
 			},
 			hoverProvider: true,
-			signatureHelpProvider: {
-				triggerCharacters: [
-					'('
-				],
-			}
 		}
 	};
 	if (hasWorkspaceFolderCapability) {
@@ -141,65 +135,74 @@ documents.onDidClose(e => {
 	documentSettings.delete(e.document.uri);
 });
 
+documents.onDidSave(e => {
+	connection.sendDiagnostics({ uri: e.document.uri, diagnostics: getDiagnosticsFromAntlr()});
+})
+
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
-documents.onDidChangeContent(async change => {
+documents.onDidChangeContent(change => {
+	// await sleep(3000);
+	// getDataFromAntlr(documents.get(change.document.uri)!);
+	// let mySetting = await getDocumentSettings(change.document.uri);
+	getDataFromAntlr(change.document);
+	
 	validateTextDocument(change.document);
-	await sleep(3000);
-	getDataFromAntlr(documents.get(change.document.uri)!);
 });
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	// In this simple example we get the settings for every validate run.
 	let settings = await getDocumentSettings(textDocument.uri);
+	// connection.sendDiagnostics({uri: textDocument.uri, diagnostics: getDiagnosticsFromAntlr()});
 
-	// The validator creates diagnostics for all uppercase words length 2 and more
-	let text = textDocument.getText();
-	let pattern = /\b[A-Z]{2,}\b/g;
-	let m: RegExpExecArray | null;
+	// // The validator creates diagnostics for all uppercase words length 2 and more
+	// let text = textDocument.getText();
+	// let pattern = /\b[A-Z]{2,}\b/g;
+	// let m: RegExpExecArray | null;
 
-	let problems = 0;
-	let diagnostics: Diagnostic[] = [];
-	while ((m = pattern.exec(text)) && problems < settings.maxNumberOfProblems) {
-		problems++;
-		let diagnostic: Diagnostic = {
-			severity: DiagnosticSeverity.Warning,
-			range: {
-				start: textDocument.positionAt(m.index),
-				end: textDocument.positionAt(m.index + m[0].length)
-			},
-			message: `${m[0]} is all uppercase.`,
-			source: 'ex'
-		};
-		if (hasDiagnosticRelatedInformationCapability) {
-			diagnostic.relatedInformation = [
-				{
-					location: {
-						uri: textDocument.uri,
-						range: Object.assign({}, diagnostic.range)
-					},
-					message: 'Spelling matters'
-				},
-				{
-					location: {
-						uri: textDocument.uri,
-						range: Object.assign({}, diagnostic.range)
-					},
-					message: 'Particularly for names'
-				}
-			];
-		}
-		diagnostics.push(diagnostic);
-	}
+	// let problems = 0;
+	// let diagnostics: Diagnostic[] = [];
+	// while ((m = pattern.exec(text)) && problems < settings.maxNumberOfProblems) {
+	// 	problems++;
+	// 	let diagnostic: Diagnostic = {
+	// 		severity: DiagnosticSeverity.Warning,
+	// 		range: {
+	// 			start: textDocument.positionAt(m.index),
+	// 			end: textDocument.positionAt(m.index + m[0].length)
+	// 		},
+	// 		message: `${m[0]} is all uppercase.`,
+	// 		source: 'ex'
+	// 	};
+	// 	if (hasDiagnosticRelatedInformationCapability) {
+	// 		diagnostic.relatedInformation = [
+	// 			{
+	// 				location: {
+	// 					uri: textDocument.uri,
+	// 					range: Object.assign({}, diagnostic.range)
+	// 				},
+	// 				message: 'Spelling matters'
+	// 			},
+	// 			{
+	// 				location: {
+	// 					uri: textDocument.uri,
+	// 					range: Object.assign({}, diagnostic.range)
+	// 				},
+	// 				message: 'Particularly for names'
+	// 			}
+	// 		];
+	// 	}
+	// 	diagnostics.push(diagnostic);
+	// }
 
 	// Send the computed diagnostics to VSCode.
-	//connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
+	// connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
 }
 
-connection.onDidChangeWatchedFiles(_change => {
-	// Monitored files have change in VSCode
-	connection.console.log('We received an file change event');
-});
+// connection.onDidChangeWatchedFiles(_change => {
+// 	// Monitored files have change in VSCode
+// 	connection.console.log('We received an file change event');
+// });
+
 
 connection.onHover(({textDocument, position}: HoverParams): Hover | undefined => {
 
@@ -212,7 +215,7 @@ connection.onHover(({textDocument, position}: HoverParams): Hover | undefined =>
 
 
 // This handler provides the initial list of the completion items.
-connection.onCompletion(({textDocument, position}: TextDocumentPositionParams): CompletionItem[] => {
+connection.onCompletion(({}: TextDocumentPositionParams): CompletionItem[] => {
 
 	const finalCompletion: CompletionItem[] = getCompletionItems();
 	return finalCompletion;

@@ -97,17 +97,7 @@ patterns:
 # types
 - comment: xxx
   name: storage.type
-  match: \b(bit|varbit|int|bytes)\b
-
-# types
-- comment: xxx
-  name: storage.type
-  match: \b(paser|control|table|action_profile|counter)\s
-
-- comment: xxx
-  name: storage.modifier 
-  match: \b(direct|static)\b
-
+  match: \b(parser|control|table|action_profile|counter)\b
 
 - comment: xxx
   name: variable.language
@@ -148,3 +138,21 @@ patterns:
 - comment: builtin functions
   name: support.function
   match: \b(apply|valid|select|current|extract)\s(?:\()
+# ====================================================================
+
+- comment: typedef and const for example
+  name: entity.other.attribute-name
+  match: \b(typedef|const)\b
+
+- comment: xxx
+  name: storage.modifier 
+  match: \b(direct|static|extern)\b
+
+  # types
+- comment: xxx
+  name: storage.type
+  match: \b(bit|varbit|int|bytes|bool|error|match_kind})\b
+
+- comment: derived types
+  name: storage.type
+  match: \b(enum|header|struct|header_union|tuple|extern|parser|control|package)\b

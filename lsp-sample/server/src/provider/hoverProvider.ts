@@ -1,4 +1,4 @@
-import { Hover } from 'vscode-languageserver';
+import { Hover, Diagnostic } from 'vscode-languageserver';
 import { TerminalNode } from 'antlr4ts/tree/TerminalNode';
 import { 
 	ControlDeclarationContext,
@@ -35,7 +35,7 @@ export function getHoverContent(index: number): Hover | undefined {
 		} else {
 			content = `${currentRuleNode!.text} is a global variable`;
 		}
-	} 
+	}
 
 	return {
 		contents: content!
@@ -74,7 +74,6 @@ function isGlobalRule(rule: RuleNode | undefined): CurrentNodeContext {
 	while(rule !== undefined) {
 		for(let ctx of contextArray) {
 			if(rule instanceof ctx) {
-				console.log('Itt variable szoval kene a getchildcontent')
 				return {isGlobal: false, name: getChildContent(rule)};
 			}
 		}

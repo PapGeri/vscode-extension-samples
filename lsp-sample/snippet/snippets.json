@@ -39,7 +39,7 @@
 	"Control snippet": {
 		"prefix": "control",
 		"body": [
-			"control ${1:control_name} (${2|in|out|inout|packet_in|packet_out} ${3:packet_name} , ${4|in|out|inout|packet_in|packet_out} ${5:variable_type} ${6:variable_name}) {",
+			"control ${1:control_name} (${2|in,out,inout,packet_in,packet_out|} ${3:packet_name} , ${4|in,out,inout,packet_in,packet_out|} ${5:variable_type} ${6:variable_name}) {",
 			"\tapply {",
 			"\t\t$0",
 			"\t}",
