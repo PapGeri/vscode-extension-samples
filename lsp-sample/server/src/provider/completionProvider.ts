@@ -3,12 +3,12 @@ import { COMPLETION_LISTENER } from '../compiler/antlr4ts_proxy';
 
 export function getCompletionItems(): CompletionItem[] {
 	
-	let completion: CompletionItem[] = new Array<CompletionItem>();
+	let completionItems: CompletionItem[] = new Array<CompletionItem>();
 
-	const myarray: string[] = COMPLETION_LISTENER!.completionList;
-	const uniqueArr = [...new Set(myarray)];
+	const tokenArray: string[] | undefined = COMPLETION_LISTENER?.completionList;
+	const uniqueArr = [...new Set(tokenArray)];
 	
-	completion = uniqueArr.map(text => CompletionItem.create(text));
+	completionItems = uniqueArr.map(text => CompletionItem.create(text));
 
-	return completion;
+	return completionItems;
 }

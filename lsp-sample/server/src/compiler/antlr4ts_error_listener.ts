@@ -3,8 +3,7 @@ import { ANTLRErrorListener } from 'antlr4ts/ANTLRErrorListener';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { Diagnostic, DiagnosticSeverity } from 'vscode-languageserver';
 import { RecognitionException } from 'antlr4ts/RecognitionException';
-import { Override } from 'antlr4ts/Decorators';
- 
+
 export class MyErrorListener implements ANTLRErrorListener<Token> {
 
 	private textDocument: TextDocument;
@@ -23,7 +22,6 @@ export class MyErrorListener implements ANTLRErrorListener<Token> {
 		return this.diagnostics;
 	}
 
-	@Override
 	public syntaxError<T extends Token>(_recognizer: Recognizer<T, any>, offendingSymbol: T | undefined, _line: number, _charPositionInLine: number, msg: string, _e: RecognitionException | undefined): void {
 		
 		let start = offendingSymbol!.startIndex;

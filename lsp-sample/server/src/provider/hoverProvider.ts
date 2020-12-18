@@ -1,4 +1,4 @@
-import { Hover, Diagnostic } from 'vscode-languageserver';
+import { Hover } from 'vscode-languageserver';
 import { TerminalNode } from 'antlr4ts/tree/TerminalNode';
 import { 
 	ControlDeclarationContext,
@@ -25,13 +25,13 @@ interface CurrentNodeContext {
 export function getHoverContent(index: number): Hover | undefined {
 
 	let content: string | undefined;
-	let currentToken: TerminalNode | undefined = getCurrentToken(index);
+	let currentToken: TerminalNode | undefined = getCurrentToken(index, HOVER_LISTENER!.nodeList);
 	let currentRuleNode: RuleNode | undefined = currentToken?._parent;
-	let hoverResult: CurrentNodeContext = isGlobalRule(currentRuleNode);
+	let hoverResult: CurrentNodeContext | undefined = isGlobalRule(currentRuleNode);
 
 	if(tokenIsDeclaration(currentRuleNode)) {
-		if(!hoverResult.isGlobal) {
-			content = hoverResult.name;
+		if(!hoverResult?.isGlobal) {
+			content = hoverResult?.name;
 		} else {
 			content = `${currentRuleNode!.text} is a global variable`;
 		}
@@ -46,18 +46,20 @@ export function getHoverContent(index: number): Hover | undefined {
 let contextArray = [ControlDeclarationContext, ParserDeclarationContext, ActionDeclarationContext];
 
 // get the actual token on which the hover is on
-function getCurrentToken(index: number): TerminalNode | undefined {
+export function getCurrentToken(index: number, list: TerminalNode[]): TerminalNode | undefined {
 
-	for(let token of HOVER_LISTENER!.nodeList) {
-		if((index == token._symbol.startIndex && index == token._symbol.stopIndex) || (index <= token._symbol.stopIndex && index >= token._symbol.startIndex)) {
-			return token;
+	if(list.length !== 0){
+		for(let token of list) {
+			if((index == token._symbol.startIndex && index == token._symbol.stopIndex) || (index <= token._symbol.stopIndex && index >= token._symbol.startIndex)) {
+				return token;
+			}
 		}
 	}
 	return undefined;
 }
 
 // check wether a token is a variable declaration
-function tokenIsDeclaration(rule: RuleNode | undefined): boolean {
+export function tokenIsDeclaration(rule: RuleNode | undefined): boolean {
 	
 	while(rule !== undefined) {
 		if(rule instanceof NameContext && (rule.parent instanceof VariableDeclarationContext || rule.parent instanceof ConstantDeclarationContext)) {
@@ -69,28 +71,41 @@ function tokenIsDeclaration(rule: RuleNode | undefined): boolean {
 }
 
 // check wether a token belongs to a local declaration scope
-function isGlobalRule(rule: RuleNode | undefined): CurrentNodeContext {
+export function isGlobalRule(rule: RuleNode | undefined): CurrentNodeContext | undefined {
+
+	if(rule === undefined) {
+		return undefined;	
+	}
 
 	while(rule !== undefined) {
 		for(let ctx of contextArray) {
 			if(rule instanceof ctx) {
-				return {isGlobal: false, name: getChildContent(rule)};
+				return {
+					isGlobal: false,
+					name: getChildContent(rule)
+				};
 			}
 		}
 		rule = rule.parent;
 	}
-	return {isGlobal: true, name: ''};
+
+	return {
+		isGlobal: true,
+		name: ''
+	};
 }
 
-function getChildContent(rule: RuleNode | undefined): string {
+export function getChildContent(rule: RuleNode | undefined): string {
 
-	let resultStr: string = '';
+	let result: string = '';
+	let exceptionChars: string[] = ['(', ')', ',', '{' , '}', ';'];
+
 	let newListener = new HoverListener();
 	let newList: string[] = newListener.textList;
 
 	let goodNode: ParseTree | undefined;
 
-	for(let i = 0; i < rule!.childCount; i++){
+	for(let i = 0; i < rule?.childCount!; i++){
 		if(rule?.getChild(i) instanceof ParserTypeDeclarationContext || rule?.getChild(i) instanceof ControlTypeDeclarationContext){
 			goodNode = rule.getChild(i);
 			break;
@@ -99,22 +114,18 @@ function getChildContent(rule: RuleNode | undefined): string {
 
 	ParseTreeWalker.DEFAULT.walk(newListener, goodNode!);
 
-	// itt azt nezem hogy a kovetkezo elem az egy karakterbol all-e hogy jol nezzen ki a hover spaceingje
-	// jobb lenne egy listaba kigyujteni az elemeket ahol nem kell space pl. (, ), ;, ,,
-	// WIP == needs working
-
-	// talan kulon function ami ezt megcsinalja, valahogy newLine-t ha { vagy ; a krarketer
-
-	for(let index = 0; index < newList.length; index++){
-		if(index === 0){
-			resultStr += newList[index];
-		}
-		else if(newList[index].length < 2) {
-			resultStr += newList[index];
+	for(let i = 0; i <= newList.length-1; i++) {
+		let str: string = newList[i];
+		if(exceptionChars.includes(str) || exceptionChars.includes(newList[i+1])) {
+			if(str === ',' || str === ';'){
+				result += str + ' ';
+			} else {
+				result += str;
+			}
 		} else {
-			resultStr += ' ' + newList[index];
+			result += str + ' ';
 		}
 	}
 
-	return resultStr;
+	return result;
 }

@@ -24,7 +24,7 @@ export enum ContextDeclarationEnum {
 
 export interface ContextInfo{
 	type: ContextDeclarationEnum,
-	name: string,
+	name: RuleContext,
 }
 
 export class CompletionResolveListener implements P4grammarListener {
@@ -46,27 +46,27 @@ export class CompletionResolveListener implements P4grammarListener {
 	}
 
 	enterVariableDeclaration(ctx: VariableDeclarationContext): void {
-		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.VARIABLE, name: getVariableName(ctx)});
+		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.VARIABLE, name: ctx});
 	}
 
 	enterActionDeclaration(ctx: ActionDeclarationContext): void {
-		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.ACTION, name: getVariableName(ctx)});
+		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.ACTION, name: ctx});
 	}
 
 	enterStructTypeDeclaration(ctx: StructTypeDeclarationContext): void {
-		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.STRUCT, name: getVariableName(ctx)});
+		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.STRUCT, name: ctx});
 	}
 
 	enterTableDeclaration(ctx: TableDeclarationContext): void {
-		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.STRUCT, name: getVariableName(ctx)});
+		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.STRUCT, name: ctx});
 	}
 
 	enterControlTypeDeclaration(ctx: ControlTypeDeclarationContext): void {
-		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.CONTROL, name: getVariableName(ctx)});
+		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.CONTROL, name: ctx});
 	}
 
 	enterParserTypeDeclaration(ctx: ParserTypeDeclarationContext): void {
-		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.PARSER, name: getVariableName(ctx)});
+		this.resolverMap.set(ctx, {type: ContextDeclarationEnum.PARSER, name: ctx});
 	}
 
 	get tokenTextList(): Array<string> {
@@ -76,19 +76,5 @@ export class CompletionResolveListener implements P4grammarListener {
 	get compResolvMap(): Map<RuleContext | undefined, ContextInfo> {
 		return this.resolverMap;
 	}
-}
-
-function getVariableName(ctx: RuleContext): string {
-
-	let returnContext: ParseTree | undefined;
-
-	for(let i = 0; i < ctx.childCount; i++){
-		if(ctx.getChild(i) instanceof NameContext){
-			returnContext = ctx.getChild(i);
-			return returnContext.text;
-		}
-	}
-
-	return '';
 }
 
